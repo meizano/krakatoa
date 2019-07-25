@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+    <title>Krakatoa Virtual Reality Tour</title>
+    <script src="./js/aframe/aframe.min.js"></script>
+</head>
+
+<body>
+    <a-scene>
+        <a-entity position="0 2.2 4">
+            <a-entity id="cameraRig">
+                <a-camera id="camera">
+                </a-camera>
+                <a-entity id="mouseCursor" cursor="rayOrigin: mouse"></a-entity>
+                <a-entity laser-controls></a-entity>
+            </a-entity>
+        </a-entity>
+        <a-sky src="./assets/SAM_103_0636.jpg" radius="30"></a-sky>
+        <a-text value="Gunung Anak Krakatau" color="#111" align="center" position="-3 4 -2" rotation="0 30 0"></a-text>
+    </a-scene>
+</body>
+
+</html>
