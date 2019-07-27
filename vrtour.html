@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+    <title>Krakatoa Virtual Reality Tour</title>
+    <script src="./js/aframe/aframe.min.js"></script>
+    <script src="./js/aframe/aframe-event-set-component.min.js"></script>
+    <script src="./js/aframe/aframe-layout-component.min.js"></script>
+    <script src="./js/aframe/aframe-template-component.min.js"></script>
+    <script src="./js/aframe/aframe-proxy-event-component.min.js"></script>
+</head>
+
+<body style='margin : 0px; overflow: hidden;'>
+
+    <a-scene>
+        <a-assets>
+            <img id="krakatoa-01" crossorigin="anonymous" src="./assets/SAM_103_0636.jpg">
+            <img id="thumb" crossorigin="anonymous" src="./assets/mapicon.png">
+            <audio id="click-sound" crossorigin="anonymous" src="./audio/click.ogg"></audio>
+            <img id="krakatoa-02" crossorigin="anonymous" src="./assets/SAM_103_0617.jpg">
+            <img id="krakatoa-03" crossorigin="anonymous" src="./assets/SAM_103_0632.jpg">
+            <img id="arrow" src="./assets/SAM_103_0636.jpg">
+
+
+            <!-- Image link template to be reused. -->
+            <script id="link" type="text/html">
+                <a-entity class="link" geometry="primitive: sphere; radius: 0.5;" material="shader: flat; src: ${thumb}" event-set__mouseenter="scale: 1.2 1.2 1" event-set__mouseleave="scale: 1 1 1" event-set__click="_target: #image-360; _delay: 300; material.src: ${src}"
+                    proxy-event="event: click; to: #image-360; as: fade" sound="on: click; src: #click-sound"></a-entity>
+            </script>
+        </a-assets>
+
+        <!-- 360-degree image. -->
+        <a-sky id="image-360" radius="10" src="#krakatoa-01" animation__fade="property: components.material.material.color; type: color; from: #FFF; to: #000; dur: 300; startEvents: fade" animation__fadeback="property: components.material.material.color; type: color; from: #000; to: #FFF; dur: 300; startEvents: animationcomplete__fade"></a-sky>
+
+        <!-- Image links. -->
+        <a-entity id="links" layout="type: line; margin: 1.5" position="0 -1 -4">
+            <a-entity template="src: #link" data-src="#krakatoa-02" data-thumb="#krakatoa-02"></a-entity>
+            <a-entity template="src: #link" data-src="#krakatoa-01" data-thumb="#arrow"></a-entity>
+            <a-entity template="src: #link" data-src="#krakatoa-03" data-thumb="#krakatoa-03"></a-entity>
+        </a-entity>
+
+        <!-- Camera + cursor. -->
+        <a-entity id="camera" camera look-controls>
+            <a-cursor id="cursor" position="0 0 -3" geometry="primitive: ring; radiusInner: 0.05; radiusOuter: 0.1;" material="color: black; shader: flat" cursor="maxDistance: 30; fuse: true" animation__click="property: scale; from: 0.1 0.1 0.1; to: 1 1 1;startEvents: click; dur: 150;easing:easeInQuad;"
+                animation__fusing="property: scale; from: 1 1 1; to: 0.1 0.1 0.1;startEvents: fusing; dur: 1500;easing:easeInQuad;" event-set__mouseenter="_event: mouseenter; color: springgreen" event-set__mouseleave="_event: mouseleave; color: black" raycaster="objects: .link"></a-cursor>
+        </a-entity>
+    </a-scene>
+    <script>
+        let vrtour;
+        // mengakses DOM scene
+        scene = document.querySelector("a-scene");
+
+        // Mengambil data JSON dari server
+        var url = './dispatcher/vrdata.json'; // URL dari data JSON
+        fetch(url)
+            .then((resp) => resp.json()) // Mengubah text json jadi obyek (pada javascript)
+            .then(function(data) {
+                console.log(data);
+                vrtour = data;
+                placeVRobject(data, scene); // membuat obyek
+            })
+            .catch(function(error) {
+                console.log(JSON.stringify(error));
+            });
+
+        // Fungsi membuat obyek tulisan pada a-frame
+        function placeVRobject(vrdata, scenel) {
+            for (let i = 0; i < place.length; i++) {
+                console.log(i);
+                let marker =
+                    `<a-box width="2.4" height="1" color="cyan" opacity="0.7" position="${(3 * i) - 3} ${2} ${-2}">
+                    <a-text 
+                        value="${ruang[i].nama} sedang ${ruang[i].dipakai}" 
+                        rotation="0 0 0" 
+                        color="green" 
+                        position="0 0 0.51"
+                        align="center">
+                    </a-text>
+                </a-box>
+                `;
+                scenel.insertAdjacentHTML('beforeend', marker);
+            }
+        }
+    </script>
+</body>
+
+</html>
