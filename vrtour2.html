@@ -44,6 +44,16 @@
 
         </a-assets>
 
+        <a-entity position="0 2.2 4">
+            <a-entity camera look-controls>
+                <a-entity position="0 0 -3" geometry="primitive: ring; radiusInner: 0.2; radiusOuter: 0.3;"
+                    material="color: cyan; shader: flat" cursor="maxDistance: 30; fuse: true"
+                    animation__click="property: scale; from: 0.2 0.2 0.2; to: 1 1 1;startEvents: click; dur: 150;easing:easeInQuad;"
+                    animation__fusing="property: scale; from: 1 1 1; to: 0.2 0.2 0.2;startEvents: fusing; dur: 1500;easing:easeInQuad;">
+                </a-entity>
+            </a-entity>
+        </a-entity>
+
         <a-entity position="-3.5 1 0">
             <a-entity mixin="cube blue"
                 animation__click="property: position; from: 0 0 0; to: 0 0 -10;easing: linear; startEvents: click; dur: 2000;"
@@ -51,11 +61,12 @@
             </a-entity>
         </a-entity>
 
+    
             <!-- Camera + cursor. -->
-            <a-entity id="camera" camera look-controls>
+            <!-- <a-entity id="camera" camera look-controls>
                 <a-cursor id="cursor" position="0 0 -3" geometry="primitive: ring; radiusInner: 0.05; radiusOuter: 0.1;" material="color: black; shader: flat" cursor="maxDistance: 30; fuse: true" animation__click="property: scale; from: 0.5 0.5 0.5; to: 1 1 1;startEvents: click; dur: 150;easing:easeInQuad;"
                     animation__fusing="property: scale; from: 1 1 1; to: 0.5 0.5 0.5;startEvents: fusing; dur: 1000;easing:easeInQuad;" event-set__mouseenter="_event: mouseenter; color: springgreen" event-set__mouseleave="_event: mouseleave; color: black" raycaster="objects: .link"></a-cursor>
-            </a-entity>
+            </a-entity> -->
             <!-- 360-degree image. -->
             <a-sky id="image-360" radius="10" src="#krakatoa-01" animation__fade="property: components.material.material.color; type: color; from: #FFF; to: #000; dur: 300; startEvents: fade" animation__fadeback="property: components.material.material.color; type: color; from: #000; to: #FFF; dur: 300; startEvents: animationcomplete__fade"></a-sky>
     
