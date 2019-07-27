@@ -43,9 +43,9 @@
         </a-assets>
 
         <!-- Camera + cursor. -->
-        <a-entity id="camera" camera look-controls>
+        <a-entity id="camera" camera look-controls user-height="0" wasd-controls-enabled="false" >
             <a-cursor id="cursor" position="0 0 -5" geometry="primitive: ring; radiusInner: 0.05; radiusOuter: 0.1;"
-                material="color: black; shader: flat" cursor="maxDistance: 30; fuse: true"
+                material="color: black; shader: flat" cursor="fuse: true; fuseTimeout: cursorFuseTimeout;"
                 animation__click="property: scale; from: 0.5 0.5 0.5; to: 1 1 1;startEvents: click; dur: 150;easing:easeInQuad;"
                 animation__fusing="property: scale; from: 1 1 1; to: 0.5 0.5 0.5;startEvents: fusing; dur: 1000;easing:easeInQuad;"
                 event-set__mouseenter="_event: mouseenter; color: springgreen"
