@@ -35,7 +35,7 @@
             init: function () {
 
                 //add image source of hotspot icon
-                this.el.setAttribute("src", "#hotspot");
+                this.el.setAttribute("mixin", "cube yellow");
                 //make the icon look at the camera all the time
                 this.el.setAttribute("look-at", "#camera");
 
@@ -74,58 +74,105 @@
             <img id="dermaga-canti-01" crossorigin="anonymous" src="./assets/SAM_103_0691.jpg">
             <img id="dermaga-canti-02" crossorigin="anonymous" src="./assets/SAM_103_0699.jpg">
 
-            <img id="hotspot" src="./assets/up-arrow.png" />
+            <a-mixin id="yellow" material="color: yellow"></a-mixin>
+            <a-mixin id="sphere" geometry="primitive: sphere;radius: 0.25"></a-mixin>
+            <a-mixin id="cube" geometry="primitive: box;height: 0.25; width: 0.25;depth: 0.25; rotation: 0 0 0"></a-mixin>
         </a-assets>
 
         <a-entity id="spots" hotspots>
             <a-entity id="group-krakatoa-01">
-                <a-image spot="linkto:#krakatoa-02;spotgroup:group-krakatoa-02" position="10 0 -8"></a-image>
-                <a-image spot="linkto:#krakatoa-06;spotgroup:group-krakatoa-06" position="0 0 10"></a-image>
-                <a-image spot="linkto:#dermaga-sebesi-01;spotgroup:group-sebesi-01" position="-4 0 10"></a-image>
+                <a-entity spot="linkto:#krakatoa-02;spotgroup:group-krakatoa-02" position="10 0 -8" rotation="0 -90 0">
+                    <a-text value="Krakatoa 02"></a-text>
+                </a-entity>
+                <a-entity spot="linkto:#krakatoa-06;spotgroup:group-krakatoa-06" position="0 0 10" rotation="0 180 0">
+                    <a-text value="Krakatoa 06"></a-text>
+                </a-entity>
+                <a-entity spot="linkto:#dermaga-sebesi-01;spotgroup:group-sebesi-01" position="-4 0 10" rotation="0 135 0">
+                    <a-text value="Dermaga Sebesi"></a-text>
+                </a-entity>
             </a-entity>
             <a-entity id="group-krakatoa-02">
-                <a-image spot="linkto:#krakatoa-01;spotgroup:group-krakatoa-01" position="10 0 -8"></a-image>
-                <a-image spot="linkto:#krakatoa-03;spotgroup:group-krakatoa-03" position="0 0 10"></a-image>
+                <a-entity spot="linkto:#krakatoa-01;spotgroup:group-krakatoa-01" position="10 0 -8" rotation="0 -90 0">
+                    <a-text value="Krakatoa 02"></a-text>
+                </a-entity>
+                <a-entity spot="linkto:#krakatoa-03;spotgroup:group-krakatoa-03" position="0 0 10" rotation="0 180 0">
+                    <a-text value="Krakatoa 06"></a-text>
+                </a-entity>
             </a-entity>
             <a-entity id="group-krakatoa-03">
-                <a-image spot="linkto:#krakatoa-02;spotgroup:group-krakatoa-02" position="10 0 -8"></a-image>
-                <a-image spot="linkto:#krakatoa-04;spotgroup:group-krakatoa-04" position="0 0 10"></a-image>
+                <a-entity spot="linkto:#krakatoa-02;spotgroup:group-krakatoa-02" position="10 0 -8" rotation="0 -90 0">
+                    <a-text value="Krakatoa 03"></a-text>
+                </a-entity>
+                <a-entity spot="linkto:#krakatoa-04;spotgroup:group-krakatoa-04" position="0 0 10" rotation="0 180 0">
+                    <a-text value="Krakatoa 04"></a-text>
+                </a-entity>
             </a-entity>
             <a-entity id="group-krakatoa-04">
-                <a-image spot="linkto:#krakatoa-03;spotgroup:group-krakatoa-03" position="10 0 -8"></a-image>
-                <a-image spot="linkto:#krakatoa-05;spotgroup:group-krakatoa-05" position="0 0 10"></a-image>
+                <a-entity spot="linkto:#krakatoa-03;spotgroup:group-krakatoa-03" position="10 0 -8" rotation="0 -90 0">
+                    <a-text value="Krakatoa 03"></a-text>
+                </a-entity>
+                <a-entity spot="linkto:#krakatoa-05;spotgroup:group-krakatoa-05" position="0 0 10" rotation="0 180 0">
+                    <a-text value="Krakatoa 05"></a-text>
+                </a-entity>
             </a-entity>
             <a-entity id="group-krakatoa-05">
-                <a-image spot="linkto:#krakatoa-04;spotgroup:group-krakatoa-04" position="10 0 -8"></a-image>
-                <a-image spot="linkto:#krakatoa-06;spotgroup:group-krakatoa-06" position="0 0 10"></a-image>
+                <a-entity spot="linkto:#krakatoa-04;spotgroup:group-krakatoa-04" position="10 0 -8" rotation="0 -90 0">
+                    <a-text value="Krakatoa 04"></a-text>
+                </a-entity>
+                <a-entity spot="linkto:#krakatoa-06;spotgroup:group-krakatoa-06" position="0 0 10" rotation="0 180 0">
+                    <a-text value="Krakatoa 06"></a-text>
+                </a-entity>
             </a-entity>
             <a-entity id="group-krakatoa-06">
-                <a-image spot="linkto:#krakatoa-05;spotgroup:group-krakatoa-05" position="10 0 -8"></a-image>
-                <a-image spot="linkto:#krakatoa-01;spotgroup:group-krakatoa-01" position="0 0 10"></a-image>
+                <a-entity spot="linkto:#krakatoa-05;spotgroup:group-krakatoa-05" position="10 0 -8" rotation="0 -90 0">
+                    <a-text value="Krakatoa 05"></a-text>
+                </a-entity>
+                <a-entity spot="linkto:#krakatoa-01;spotgroup:group-krakatoa-01" position="0 0 10" rotation="0 180 0">
+                    <a-text value="Krakatoa 01"></a-text>
+                </a-entity>
             </a-entity>
             <a-entity id="group-sebesi-01" scale="0 0 0">
-                <a-image spot="linkto:#krakatoa-01;spotgroup:group-krakatoa-01" position="10 0 -8"></a-image>
-                <a-image spot="linkto:#dermaga-canti-01;spotgroup:group-canti-01" position="0 0 10"></a-image>
-                <a-image spot="linkto:#dermaga-sebesi-02;spotgroup:group-sebesi-02" position="-4 0 10"></a-image>
+                <a-entity spot="linkto:#krakatoa-01;spotgroup:group-krakatoa-01" position="10 0 -8" rotation="0 -90 0">
+                    <a-text value="Krakatoa 01"></a-text>
+                </a-entity>
+                <a-entity spot="linkto:#dermaga-canti-01;spotgroup:group-canti-01" position="0 0 10" rotation="0 180 0">
+                    <a-text value="Dermaga Canti 01"></a-text>
+                </a-entity>
+                <a-entity spot="linkto:#dermaga-sebesi-02;spotgroup:group-sebesi-02" position="-4 0 10" rotation="0 135 0">
+                    <a-text value="Dermaga Sebesi 02"></a-text>
+                </a-entity>
             </a-entity>
             <a-entity id="group-sebesi-02" scale="0 0 0">
-                <a-image spot="linkto:#dermaga-sebesi-01;spotgroup:group-sebesi-01" position="-4 0 10"></a-image>
+                <a-entity spot="linkto:#dermaga-sebesi-01;spotgroup:group-sebesi-01" position="-4 0 10" rotation="0 135 0">
+                    <a-text value="Dermaga Sebesi 01"></a-text>
+                </a-entity>
             </a-entity>
             <a-entity id="group-canti-01" scale="0 0 0">
-                <a-image spot="linkto:#dermaga-sebesi-01;spotgroup:group-sebesi-01" position="0 0 10"></a-image>
-                <a-image spot="linkto:#dermaga-canti-02;spotgroup:group-canti-02" position="-4 0 10"></a-image>
+                <a-entity spot="linkto:#dermaga-sebesi-01;spotgroup:group-sebesi-01" position="0 0 10" rotation="0 180 0">
+                    <a-text value="Dermaga Sebesi 01"></a-text>
+                </a-entity>
+                <a-entity spot="linkto:#dermaga-canti-02;spotgroup:group-canti-02" position="-4 0 10" rotation="0 135 0">
+                    <a-text value="Dermaga Canti 02"></a-text>
+                </a-entity>
             </a-entity>
             <a-entity id="group-canti-02" scale="0 0 0">
-                <a-image spot="linkto:#dermaga-canti-01;spotgroup:group-canti-01" position="-4 0 10"></a-image>
+                <a-entity spot="linkto:#dermaga-canti-01;spotgroup:group-canti-01" position="-4 0 10" rotation="0 135 0">
+                    <a-text value="Dermaga Canti 01"></a-text>
+                </a-entity>
             </a-entity>
         </a-entity>
 
         <a-sky id="skybox" src="#krakatoa-01"></a-sky>
 
         <a-entity id="cam" camera position="0 1.6 0" look-controls>
-            <a-entity cursor="fuse:true;fuseTimeout:2000" geometry="primitive:ring;radiusInner:0.01;radiusOuter:0.02"
+            <a-entity cursor="fuse:true;fuseTimeout:2000"
+                geometry="primitive:ring;radiusInner:0.02;radiusOuter:0.03"
                 position="0 0 -1.8" material="shader:flat;color:#ff0000"
-                animation__mouseenter="property:scale;to:3 3 3;startEvents:mouseenter;endEvents:mouseleave;dir:reverse;dur:2000;loop:1">
+                animation__click="property: scale; from: 0.5 0.5 0.5; to: 1 1 1;startEvents: click; dur: 150;easing:easeInQuad;"
+                animation__fusing="property: scale; from: 1 1 1; to: 0.5 0.5 0.5;startEvents: fusing; dur: 1000;easing:easeInQuad;"
+                animation__mouseenter="property: components.material.material.color; type: color; to: springgreen; startEvents: mouseenter;dur:0"
+                animation__mouseleave="property: components.material.material.color; type: color; to: #ff0000; startEvents: mouseleave;dur:0" 
+                >
             </a-entity>
         </a-entity>
 
