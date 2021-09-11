@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+    <title>Krakatoa Virtual Reality Tour</title>
+    <script src="./js/aframe/aframe.min.js"></script>
+    <script src="./js/aframe/aframe-look-at-component.min.js"></script>
+</head>
+
+<body>
+    <a-scene background="color: #ECECEC">
+        <a-assets>
+            <img id="krakatoa-01" crossorigin="anonymous" src="./assets/SAM_103_0636.jpg">
+            <img id="krakatoa-02" crossorigin="anonymous" src="./assets/SAM_103_0606.jpg">
+            <img id="krakatoa-03" crossorigin="anonymous" src="./assets/SAM_103_0610.jpg">
+            <img id="krakatoa-04" crossorigin="anonymous" src="./assets/SAM_103_0615.jpg">
+            <img id="krakatoa-05" crossorigin="anonymous" src="./assets/SAM_103_0626.jpg">
+            <img id="krakatoa-06" crossorigin="anonymous" src="./assets/SAM_103_0629.jpg">
+            <img id="krakatoa-07" crossorigin="anonymous" src="./assets/SAM_103_0632.jpg">
+            <img id="dermaga-sebesi-01" crossorigin="anonymous" src="./assets/SAM_103_0681.jpg">
+            <img id="dermaga-sebesi-02" crossorigin="anonymous" src="./assets/SAM_103_0686.jpg">
+            <img id="dermaga-canti-01" crossorigin="anonymous" src="./assets/SAM_103_0691.jpg">
+            <img id="dermaga-canti-02" crossorigin="anonymous" src="./assets/SAM_103_0699.jpg">
+
+            <a-mixin id="yellow" material="color: yellow"></a-mixin>
+            <a-mixin id="sphere" geometry="primitive: sphere;radius: 0.25"></a-mixin>
+        </a-assets>
+
+        <a-entity id="cam" camera position="0 1.6 0" look-controls>
+            <a-entity cursor="fuse:true;fuseTimeout:2000" geometry="primitive:ring;radiusInner:0.02;radiusOuter:0.03" position="0 0 -1.8" material="shader:flat;color:#000000" animation__click="property: scale; from: 0.5 0.5 0.5; to: 1 1 1;startEvents: click; dur: 150;easing:easeInQuad;"
+                animation__fusing="property: scale; from: 1 1 1; to: 0.5 0.5 0.5;startEvents: fusing; dur: 1000;easing:easeInQuad;" animation__mouseenter="property: components.material.material.color; type: color; to: springgreen; startEvents: mouseenter;dur:0"
+                animation__mouseleave="property: components.material.material.color; type: color; to: #000000; startEvents: mouseleave;dur:0">
+            </a-entity>
+        </a-entity>
+
+        <a-sky id="skybox" src="#krakatoa-01">
+            <a-entity mixin="sphere yellow" look-at="#cam" position="0 0 -10">
+                <a-text value="Dermaga Sebesi 01" position="-0.5 0.5 0" text=""></a-text>
+            </a-entity>
+            <a-entity mixin="sphere yellow" look-at="#cam" position="-7.5 0 -7.5">
+                <a-text value="Dermaga Canti 02" position="-0.5 0.5 0" text=""></a-text>
+            </a-entity>
+            <a-entity mixin="sphere yellow" look-at="#cam" position="7.5 0 -7.5">
+                <a-text value="Dermaga Canti 01" position="-0.5 0.5 0" text=""></a-text>
+            </a-entity>
+            <a-entity mixin="sphere yellow" look-at="#cam" position="-10 0 0">
+                <a-text value="Krakatoa 02" position="-0.5 0.5 0" text=""></a-text>
+            </a-entity>
+            <a-entity mixin="sphere yellow" look-at="#cam" position="0 0 10">
+                <a-text value="Krakatoa 05" position="-0.5 0.5 0" text=""></a-text>
+            </a-entity>
+            <a-entity mixin="sphere yellow" look-at="#cam" position="7.5 0 7.5">
+                <a-text value="Krakatoa 01" position="-0.5 0.5 0" text=""></a-text>
+            </a-entity>
+            <a-entity mixin="sphere yellow" look-at="#cam" position="10 0 0">
+                <a-text value="Krakatoa 04" position="-0.5 0.5 0" text=""></a-text>
+            </a-entity>
+            <a-entity mixin="sphere yellow" look-at="#cam" position="-7.5 0 7.5">
+                <a-text value="Krakatoa 06" position="-0.5 0.5 0" text=""></a-text>
+            </a-entity>
+        </a-sky>
+    </a-scene>
+</body>
+
+</html>

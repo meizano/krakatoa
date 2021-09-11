@@ -6,18 +6,19 @@
     <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
     <title>Krakatoa Virtual Reality Tour</title>
     <script src="./js/aframe/aframe.min.js"></script>
+    <script src="./js/aframe/aframe-look-at-component.min.js"></script>
     <script>
         AFRAME.registerComponent('hotspots', {
-            init: function () {
-                this.el.addEventListener('reloadspots', function (evt) {
+            init: function() {
+                this.el.addEventListener('reloadspots', function(evt) {
 
                     //get the entire current spot group and scale it to 0
                     var currspotgroup = document.getElementById(evt.detail.currspots);
-                    currspotgroup.setAttribute("scale", "0 0 0");
+                    currspotgroup.object3D.scale.set(0, 0, 0);
 
                     //get the entire new spot group and scale it to 1
                     var newspotgroup = document.getElementById(evt.detail.newspots);
-                    newspotgroup.setAttribute("scale", "1 1 1");
+                    newspotgroup.object3D.scale.set(1, 1, 1);
                 });
             }
         });
@@ -32,16 +33,16 @@
                     default: ""
                 }
             },
-            init: function () {
+            init: function() {
 
                 //add image source of hotspot icon
-                this.el.setAttribute("mixin", "cube yellow");
+                this.el.setAttribute("mixin", "sphere yellow");
                 //make the icon look at the camera all the time
-                this.el.setAttribute("look-at", "#camera");
+                this.el.setAttribute("look-at", "#cam");
 
                 var data = this.data;
 
-                this.el.addEventListener('click', function () {
+                this.el.addEventListener('click', function() {
                     //set the skybox source to the new image as per the spot
                     var sky = document.getElementById("skybox");
                     sky.setAttribute("src", data.linkto);
@@ -80,84 +81,84 @@
         </a-assets>
 
         <a-entity id="spots" hotspots>
-            <a-entity id="group-krakatoa-01">
-                <a-entity spot="linkto:#krakatoa-02;spotgroup:group-krakatoa-02" position="10 0 -8" rotation="0 -90 0">
-                    <a-text value="Krakatoa 02"></a-text>
+            <a-entity id="group-krakatoa-01" scale="1 1 1">
+                <a-entity spot="linkto:#krakatoa-02;spotgroup:group-krakatoa-02" position="10 0 -8">
+                    <a-text value="Krakatoa 02" position="-0.5 0.5 0"></a-text>
                 </a-entity>
-                <a-entity spot="linkto:#krakatoa-06;spotgroup:group-krakatoa-06" position="0 0 10" rotation="0 180 0">
-                    <a-text value="Krakatoa 06"></a-text>
+                <a-entity spot="linkto:#krakatoa-06;spotgroup:group-krakatoa-06" position="0 0 10">
+                    <a-text value="Krakatoa 06" position="-0.5 0.5 0"></a-text>
                 </a-entity>
-                <a-entity spot="linkto:#dermaga-sebesi-01;spotgroup:group-sebesi-01" position="-4 0 10" rotation="0 135 0">
-                    <a-text value="Dermaga Sebesi"></a-text>
-                </a-entity>
-            </a-entity>
-            <a-entity id="group-krakatoa-02">
-                <a-entity spot="linkto:#krakatoa-01;spotgroup:group-krakatoa-01" position="10 0 -8" rotation="0 -90 0">
-                    <a-text value="Krakatoa 02"></a-text>
-                </a-entity>
-                <a-entity spot="linkto:#krakatoa-03;spotgroup:group-krakatoa-03" position="0 0 10" rotation="0 180 0">
-                    <a-text value="Krakatoa 06"></a-text>
+                <a-entity spot="linkto:#dermaga-sebesi-01;spotgroup:group-sebesi-01" position="-4 0 10">
+                    <a-text value="Dermaga Sebesi" position="-0.5 0.5 0"></a-text>
                 </a-entity>
             </a-entity>
-            <a-entity id="group-krakatoa-03">
-                <a-entity spot="linkto:#krakatoa-02;spotgroup:group-krakatoa-02" position="10 0 -8" rotation="0 -90 0">
-                    <a-text value="Krakatoa 03"></a-text>
+            <a-entity id="group-krakatoa-02" scale="0 0 0">
+                <a-entity spot="linkto:#krakatoa-01;spotgroup:group-krakatoa-01" position="10 0 -8">
+                    <a-text value="Krakatoa 02" position="-0.5 0.5 0"></a-text>
                 </a-entity>
-                <a-entity spot="linkto:#krakatoa-04;spotgroup:group-krakatoa-04" position="0 0 10" rotation="0 180 0">
-                    <a-text value="Krakatoa 04"></a-text>
-                </a-entity>
-            </a-entity>
-            <a-entity id="group-krakatoa-04">
-                <a-entity spot="linkto:#krakatoa-03;spotgroup:group-krakatoa-03" position="10 0 -8" rotation="0 -90 0">
-                    <a-text value="Krakatoa 03"></a-text>
-                </a-entity>
-                <a-entity spot="linkto:#krakatoa-05;spotgroup:group-krakatoa-05" position="0 0 10" rotation="0 180 0">
-                    <a-text value="Krakatoa 05"></a-text>
+                <a-entity spot="linkto:#krakatoa-03;spotgroup:group-krakatoa-03" position="0 0 10">
+                    <a-text value="Krakatoa 06" position="-0.5 0.5 0"></a-text>
                 </a-entity>
             </a-entity>
-            <a-entity id="group-krakatoa-05">
-                <a-entity spot="linkto:#krakatoa-04;spotgroup:group-krakatoa-04" position="10 0 -8" rotation="0 -90 0">
-                    <a-text value="Krakatoa 04"></a-text>
+            <a-entity id="group-krakatoa-03" scale="0 0 0">
+                <a-entity spot="linkto:#krakatoa-02;spotgroup:group-krakatoa-02" position="10 0 -8">
+                    <a-text value="Krakatoa 03" position="-0.5 0.5 0"></a-text>
                 </a-entity>
-                <a-entity spot="linkto:#krakatoa-06;spotgroup:group-krakatoa-06" position="0 0 10" rotation="0 180 0">
-                    <a-text value="Krakatoa 06"></a-text>
+                <a-entity spot="linkto:#krakatoa-04;spotgroup:group-krakatoa-04" position="0 0 10">
+                    <a-text value="Krakatoa 04" position="-0.5 0.5 0"></a-text>
                 </a-entity>
             </a-entity>
-            <a-entity id="group-krakatoa-06">
-                <a-entity spot="linkto:#krakatoa-05;spotgroup:group-krakatoa-05" position="10 0 -8" rotation="0 -90 0">
-                    <a-text value="Krakatoa 05"></a-text>
+            <a-entity id="group-krakatoa-04" scale="0 0 0">
+                <a-entity spot="linkto:#krakatoa-03;spotgroup:group-krakatoa-03" position="10 0 -8">
+                    <a-text value="Krakatoa 03" position="-0.5 0.5 0"></a-text>
                 </a-entity>
-                <a-entity spot="linkto:#krakatoa-01;spotgroup:group-krakatoa-01" position="0 0 10" rotation="0 180 0">
-                    <a-text value="Krakatoa 01"></a-text>
+                <a-entity spot="linkto:#krakatoa-05;spotgroup:group-krakatoa-05" position="0 0 10">
+                    <a-text value="Krakatoa 05" position="-0.5 0.5 0"></a-text>
+                </a-entity>
+            </a-entity>
+            <a-entity id="group-krakatoa-05" scale="0 0 0">
+                <a-entity spot="linkto:#krakatoa-04;spotgroup:group-krakatoa-04" position="10 0 -8">
+                    <a-text value="Krakatoa 04" position="-0.5 0.5 0"></a-text>
+                </a-entity>
+                <a-entity spot="linkto:#krakatoa-06;spotgroup:group-krakatoa-06" position="0 0 10">
+                    <a-text value="Krakatoa 06" position="-0.5 0.5 0"></a-text>
+                </a-entity>
+            </a-entity>
+            <a-entity id="group-krakatoa-06" scale="0 0 0">
+                <a-entity spot="linkto:#krakatoa-05;spotgroup:group-krakatoa-05" position="10 0 -8">
+                    <a-text value="Krakatoa 05" position="-0.5 0.5 0"></a-text>
+                </a-entity>
+                <a-entity spot="linkto:#krakatoa-01;spotgroup:group-krakatoa-01" position="0 0 10">
+                    <a-text value="Krakatoa 01" position="-0.5 0.5 0"></a-text>
                 </a-entity>
             </a-entity>
             <a-entity id="group-sebesi-01" scale="0 0 0">
-                <a-entity spot="linkto:#krakatoa-01;spotgroup:group-krakatoa-01" position="10 0 -8" rotation="0 -90 0">
-                    <a-text value="Krakatoa 01"></a-text>
+                <a-entity spot="linkto:#krakatoa-01;spotgroup:group-krakatoa-01" position="10 0 -8">
+                    <a-text value="Krakatoa 01" position="-0.5 0.5 0"></a-text>
                 </a-entity>
-                <a-entity spot="linkto:#dermaga-canti-01;spotgroup:group-canti-01" position="0 0 10" rotation="0 180 0">
-                    <a-text value="Dermaga Canti 01"></a-text>
+                <a-entity spot="linkto:#dermaga-canti-01;spotgroup:group-canti-01" position="0 0 10">
+                    <a-text value="Dermaga Canti 01" position="-0.5 0.5 0"></a-text>
                 </a-entity>
-                <a-entity spot="linkto:#dermaga-sebesi-02;spotgroup:group-sebesi-02" position="-4 0 10" rotation="0 135 0">
-                    <a-text value="Dermaga Sebesi 02"></a-text>
+                <a-entity spot="linkto:#dermaga-sebesi-02;spotgroup:group-sebesi-02" position="-4 0 10">
+                    <a-text value="Dermaga Sebesi 02" position="-0.5 0.5 0"></a-text>
                 </a-entity>
             </a-entity>
             <a-entity id="group-sebesi-02" scale="0 0 0">
-                <a-entity spot="linkto:#dermaga-sebesi-01;spotgroup:group-sebesi-01" position="-4 0 10" rotation="0 135 0">
-                    <a-text value="Dermaga Sebesi 01"></a-text>
+                <a-entity spot="linkto:#dermaga-sebesi-01;spotgroup:group-sebesi-01" position="-4 0 10">
+                    <a-text value="Dermaga Sebesi 01" position="-0.5 0.5 0"></a-text>
                 </a-entity>
             </a-entity>
             <a-entity id="group-canti-01" scale="0 0 0">
-                <a-entity spot="linkto:#dermaga-sebesi-01;spotgroup:group-sebesi-01" position="0 0 10" rotation="0 180 0">
-                    <a-text value="Dermaga Sebesi 01"></a-text>
+                <a-entity spot="linkto:#dermaga-sebesi-01;spotgroup:group-sebesi-01" position="0 0 10">
+                    <a-text value="Dermaga Sebesi 01" position="-0.5 0.5 0"></a-text>
                 </a-entity>
-                <a-entity spot="linkto:#dermaga-canti-02;spotgroup:group-canti-02" position="-4 0 10" rotation="0 135 0">
-                    <a-text value="Dermaga Canti 02"></a-text>
+                <a-entity spot="linkto:#dermaga-canti-02;spotgroup:group-canti-02" position="-4 0 10">
+                    <a-text value="Dermaga Canti 02" position="-0.5 0.5 0"></a-text>
                 </a-entity>
             </a-entity>
             <a-entity id="group-canti-02" scale="0 0 0">
-                <a-entity spot="linkto:#dermaga-canti-01;spotgroup:group-canti-01" position="-4 0 10" rotation="0 135 0">
-                    <a-text value="Dermaga Canti 01"></a-text>
+                <a-entity spot="linkto:#dermaga-canti-01;spotgroup:group-canti-01" position="-4 0 10">
+                    <a-text value="Dermaga Canti 01" position="-0.5 0.5 0"></a-text>
                 </a-entity>
             </a-entity>
         </a-entity>
@@ -165,14 +166,9 @@
         <a-sky id="skybox" src="#krakatoa-01"></a-sky>
 
         <a-entity id="cam" camera position="0 1.6 0" look-controls>
-            <a-entity cursor="fuse:true;fuseTimeout:2000"
-                geometry="primitive:ring;radiusInner:0.02;radiusOuter:0.03"
-                position="0 0 -1.8" material="shader:flat;color:#ff0000"
-                animation__click="property: scale; from: 0.5 0.5 0.5; to: 1 1 1;startEvents: click; dur: 150;easing:easeInQuad;"
-                animation__fusing="property: scale; from: 1 1 1; to: 0.5 0.5 0.5;startEvents: fusing; dur: 1000;easing:easeInQuad;"
-                animation__mouseenter="property: components.material.material.color; type: color; to: springgreen; startEvents: mouseenter;dur:0"
-                animation__mouseleave="property: components.material.material.color; type: color; to: #ff0000; startEvents: mouseleave;dur:0" 
-                >
+            <a-entity cursor="fuse:true;fuseTimeout:2000" geometry="primitive:ring;radiusInner:0.02;radiusOuter:0.03" position="0 0 -1.8" material="shader:flat;color:#000000" animation__click="property: scale; from: 0.5 0.5 0.5; to: 1 1 1;startEvents: click; dur: 150;easing:easeInQuad;"
+                animation__fusing="property: scale; from: 1 1 1; to: 0.5 0.5 0.5;startEvents: fusing; dur: 1000;easing:easeInQuad;" animation__mouseenter="property: components.material.material.color; type: color; to: springgreen; startEvents: mouseenter;dur:0"
+                animation__mouseleave="property: components.material.material.color; type: color; to: #000000; startEvents: mouseleave;dur:0">
             </a-entity>
         </a-entity>
 
